@@ -1,0 +1,201 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FakeItEasy.BackwardsCompatibility</name>
+    </assembly>
+    <members>
+        <member name="T:FakeItEasy.Configure">
+            <summary>
+            Provides configuration of faked objects.
+            </summary>
+        </member>
+        <member name="M:FakeItEasy.Configure.Fake``1(``0)">
+            <summary>
+            Gets a configuration for the specified faked object.
+            </summary>
+            <typeparam name="TFake">The type of the fake.</typeparam>
+            <param name="fakedObject">The faked object to configure.</param>
+            <returns>A configuration object.</returns>
+            <exception cref="T:System.ArgumentException">The specified object is not a faked object.</exception>
+            <exception cref="T:System.ArgumentNullException">The fakedObject parameter was null.</exception>
+        </member>
+        <member name="T:FakeItEasy.Assertion.FakeAssertions`1">
+            <summary>
+            Provides assertions for fake objects.
+            </summary>
+            <typeparam name="TFake">The type of the fake.</typeparam>
+        </member>
+        <member name="T:FakeItEasy.Assertion.IFakeAssertions`1">
+            <summary>
+            Provides methods for asserting on fake object calls.
+            </summary>
+            <typeparam name="TFake">The type of the fake.</typeparam>
+        </member>
+        <member name="M:FakeItEasy.Assertion.IFakeAssertions`1.WasCalled(System.Linq.Expressions.Expression{System.Action{`0}})">
+            <summary>
+            Throws an exception if the specified call has not been called.
+            </summary>
+            <param name="callSpecification"></param>
+        </member>
+        <member name="M:FakeItEasy.Assertion.IFakeAssertions`1.WasCalled(System.Linq.Expressions.Expression{System.Action{`0}},System.Linq.Expressions.Expression{System.Func{System.Int32,System.Boolean}})">
+            <summary>
+            Asserts that the specified call was called the number of times that is validated by the
+            repeatValidation predicate passed to the method.
+            </summary>
+            <param name="callSpecification">The call to assert on.</param>
+            <param name="repeatValidation">A lambda predicate validating that will be passed the number of times
+            the specified call was invoked and returns true for a valid repeat.</param>
+        </member>
+        <member name="M:FakeItEasy.Assertion.IFakeAssertions`1.WasCalled``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})">
+            <summary>
+            Throws an exception if the specified call has not been called.
+            </summary>
+            <typeparam name="TMember">The type of return values from the function that is asserted upon.</typeparam>
+            <param name="callSpecification">An expression describing the call to assert that has been called.</param>
+        </member>
+        <member name="M:FakeItEasy.Assertion.IFakeAssertions`1.WasCalled``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Linq.Expressions.Expression{System.Func{System.Int32,System.Boolean}})">
+            <summary>
+            Asserts that the specified call was called the number of times that is validated by the
+            repeatValidation predicate passed to the method.
+            </summary>
+            <param name="callSpecification">The call to assert on.</param>
+            <param name="repeatValidation">A lambda predicate validating that will be passed the number of times
+            the specified call was invoked and returns true for a valid repeat.</param>
+        </member>
+        <member name="M:FakeItEasy.Assertion.IFakeAssertions`1.WasNotCalled(System.Linq.Expressions.Expression{System.Action{`0}})">
+            <summary>
+            Asserts that the specified call was not made within the current scope.
+            </summary>
+            <param name="callSpecification">The call that should not have been made.</param>
+        </member>
+        <member name="M:FakeItEasy.Assertion.IFakeAssertions`1.WasNotCalled``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})">
+            <summary>
+            Asserts that the specified call was not made within the current scope.
+            </summary>
+            <param name="callSpecification">The call that should not have been made.</param>
+        </member>
+        <member name="F:FakeItEasy.Assertion.FakeAssertions`1.callMatcherFactory">
+            <summary>
+            The injected call matcher factory.
+            </summary>
+        </member>
+        <member name="F:FakeItEasy.Assertion.FakeAssertions`1.fakeAsserterFactory">
+            <summary>
+            The injected fake asserter factory.
+            </summary>
+        </member>
+        <member name="F:FakeItEasy.Assertion.FakeAssertions`1.fake">
+            <summary>
+            The fake to do assertions for.
+            </summary>
+        </member>
+        <member name="M:FakeItEasy.Assertion.FakeAssertions`1.#ctor(FakeItEasy.Core.FakeObject,FakeItEasy.Expressions.IExpressionCallMatcherFactory,FakeItEasy.Core.FakeAsserter.Factory)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FakeItEasy.Assertion.FakeAssertions`1"/> class.
+            </summary>
+            <param name="fake">The fake.</param>
+            <param name="callMatcherFactory">The call matcher factory.</param>
+            <param name="fakeAsserterFactory">The fake asserter factory.</param>
+        </member>
+        <member name="M:FakeItEasy.Assertion.FakeAssertions`1.WasCalled(System.Linq.Expressions.Expression{System.Action{`0}})">
+            <summary>
+            Throws an exception if the specified call has not been called.
+            </summary>
+            <param name="callSpecification"></param>
+        </member>
+        <member name="M:FakeItEasy.Assertion.FakeAssertions`1.WasCalled(System.Linq.Expressions.Expression{System.Action{`0}},System.Linq.Expressions.Expression{System.Func{System.Int32,System.Boolean}})">
+            <summary>
+            Asserts that the specified call was called the number of times that is validated by the
+            repeatValidation predicate passed to the method.
+            </summary>
+            <param name="callSpecification">The call to assert on.</param>
+            <param name="repeatValidation">A lambda predicate validating that will be passed the number of times
+            the specified call was invoked and returns true for a valid repeat.</param>
+        </member>
+        <member name="M:FakeItEasy.Assertion.FakeAssertions`1.WasCalled``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})">
+            <summary>
+            Throws an exception if the specified call has not been called.
+            </summary>
+            <typeparam name="TMember">The type of return values from the function that is asserted upon.</typeparam>
+            <param name="callSpecification">An expression describing the call to assert that has been called.</param>
+        </member>
+        <member name="M:FakeItEasy.Assertion.FakeAssertions`1.WasCalled``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Linq.Expressions.Expression{System.Func{System.Int32,System.Boolean}})">
+            <summary>
+            Asserts that the specified call was called the number of times that is validated by the
+            repeatValidation predicate passed to the method.
+            </summary>
+            <param name="callSpecification">The call to assert on.</param>
+            <param name="repeatValidation">A lambda predicate validating that will be passed the number of times
+            the specified call was invoked and returns true for a valid repeat.</param>
+        </member>
+        <member name="M:FakeItEasy.Assertion.FakeAssertions`1.WasNotCalled(System.Linq.Expressions.Expression{System.Action{`0}})">
+            <summary>
+            Asserts that the specified call was not made within the current scope.
+            </summary>
+            <param name="callSpecification">The call that should not have been made.</param>
+        </member>
+        <member name="M:FakeItEasy.Assertion.FakeAssertions`1.WasNotCalled``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})">
+            <summary>
+            Asserts that the specified call was not made within the current scope.
+            </summary>
+            <param name="callSpecification">The call that should not have been made.</param>
+        </member>
+        <member name="M:FakeItEasy.Assertion.FakeAssertions`1.FakeItEasy#Configuration#IHideObjectMembers#GetType">
+            <summary>
+            Provides assertions for fake objects.
+            </summary>
+            <typeparam name="TFake">The type of the fake.</typeparam>
+        </member>
+        <member name="T:FakeItEasy.ExtensionSyntax.Full.FullExtensionSyntaxCompatibilityExtensions">
+            <summary>
+            Provides methods for the full extension syntax.
+            </summary>
+        </member>
+        <member name="M:FakeItEasy.ExtensionSyntax.Full.FullExtensionSyntaxCompatibilityExtensions.Assert``1(``0)">
+            <summary>
+            Gets an object that provides assertions for the specified fake object.
+            </summary>
+            <typeparam name="TFake">The type of the fake object.</typeparam>
+            <param name="fakedObject">The fake object to get assertions for.</param>
+            <returns>An assertion object.</returns>
+            <exception cref="T:System.ArgumentException">The object passed in is not a faked object.</exception>
+        </member>
+        <member name="M:FakeItEasy.Happened.Times(System.Int32)">
+            <summary>
+            Asserts that a call has happened the specified number of times
+            or more.
+            </summary>
+            <param name="numberOfTimes">The number of times the call must have happened.</param>
+            <returns>A HappenedNoUpperBound instance.</returns>
+        </member>
+        <member name="M:FakeItEasy.Happened.Like(System.Linq.Expressions.Expression{System.Func{System.Int32,System.Boolean}})">
+            <summary>
+            Specifies that a call must have been repeated a number of times
+            that is validated by the specified repeatValidation argument.
+            </summary>
+            <param name="repeatValidation">A predicate that specifies the number of times
+            a call must have been made.</param>
+            <returns>A Repeated-instance.</returns>
+        </member>
+        <member name="P:FakeItEasy.Happened.Never">
+            <summary>
+            Asserts that a call has not happened at all.
+            </summary>
+        </member>
+        <member name="P:FakeItEasy.Happened.Once">
+            <summary>
+            Asserts that a call has happened once or more.
+            </summary>
+        </member>
+        <member name="P:FakeItEasy.Happened.Twice">
+            <summary>
+            Asserts that a call has happend twice or more.
+            </summary>
+        </member>
+        <member name="T:FakeItEasy.OldFake">
+            <summary>
+            Provides backwards compatibility methods for the FakeItEasy.Fake-class.
+            </summary>
+        </member>
+    </members>
+</doc>

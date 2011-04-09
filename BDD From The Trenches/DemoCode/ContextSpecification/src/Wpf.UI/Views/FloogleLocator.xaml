@@ -1,0 +1,25 @@
+﻿<UI:WpfView x:Class="BddDemo.Wpf.UI.Views.FloogleLocator"
+    x:TypeArguments="UI:IFloogleLocatorView, Presentation:FloogleLocatorPresenter"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Presentation="clr-namespace:BddDemo.Framework.Presentation;assembly=BddDemo.Framework"
+    xmlns:UI="clr-namespace:BddDemo.Framework.Presentation.UI;assembly=BddDemo.Framework"
+    Height="300" Width="300">
+
+    <StackPanel>
+        <Grid>
+        <Label x:Name="PartNumberLabel" Width="120" Height="28" HorizontalAlignment="Left" VerticalAlignment="Top">Part Number:</Label>
+        <TextBox x:Name="PartNumberInput" Height="23" Margin="80,2,80,2" VerticalAlignment="Top" />
+        <Button x:Name="SearchButton" HorizontalAlignment="Right" Margin="0,0,2,0" Width="75">Search</Button>
+        </Grid>
+        <ListView x:Name="FlooglesFoundList" Height="275" >
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="PartNumber" DisplayMemberBinding="{Binding PartNumber}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </StackPanel>
+        
+    
+</UI:WpfView>

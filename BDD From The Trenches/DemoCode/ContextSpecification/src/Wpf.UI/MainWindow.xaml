@@ -1,0 +1,9 @@
+﻿<Window x:Class="BddDemo.Wpf.UI.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Views="clr-namespace:BddDemo.Wpf.UI.Views"
+    Title="MainWindow" Height="300" Width="300">
+    <Grid>
+        <Views:FloogleLocator x:Name="MainFloogleLocator" />
+    </Grid>
+</Window>

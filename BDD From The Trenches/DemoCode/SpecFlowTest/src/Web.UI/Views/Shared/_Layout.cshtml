@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <title>SpecFlow Test :: @ViewBag.Title</title>
+  <link href="@Url.Content("~/Content/themes/base/style.css")" rel="stylesheet" type="text/css" />
+  <link href="@Url.Content("~/Content/nivo-slider.css")" rel="stylesheet" type="text/css" />
+  <script src="@Url.Content("~/Scripts/jquery-1.4.4.min.js")" type="text/javascript"></script>
+  <script src="@Url.Content("~/Scripts/jquery.nivo.slider.js")" type="text/javascript"></script>
+  <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+  <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+</head>
+<body class="site">
+  <div id="page-container">
+    <div id="page">
+      <div id="main-menu">
+        <ul>
+          <li>@Html.ActionLink("Home", "Index", "Home")</li>
+          <li>@Html.ActionLink("About Us", "About", "Home")</li>
+          <li>@Html.Partial("LoginLink")</li>
+        </ul>
+      </div>
+      <div id="head">
+        <a href="/" id="logo-link">Testing with the Spec to the Flow</a>
+      </div>
+      <div id="content">
+        @RenderBody()
+      </div>
+      <div id="foot">
+        <div id="copyright">&copy;2011 Testing My SpecFlow Off</div>
+      </div>
+    </div>
+  </div>
+  <div id="bottom">
+  </div>
+</body>
+</html>
