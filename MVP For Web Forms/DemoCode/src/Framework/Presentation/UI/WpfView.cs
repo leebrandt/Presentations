@@ -6,7 +6,9 @@ using StructureMap;
 
 namespace BddDemo.Framework.Presentation.UI
 {
-    public class WpfView<TView, TPresenter> : UserControl where TPresenter : Presenter<TView> where TView : class
+    public class WpfView<TView, TPresenter> : 
+        UserControl where TPresenter : 
+        Presenter<TView> where TView : class
     {
         public TPresenter Presenter { get; set; }
         protected void InitializeView()

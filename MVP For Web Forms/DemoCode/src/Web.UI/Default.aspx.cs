@@ -6,7 +6,8 @@ using BddDemo.Framework.Presentation.UI;
 
 namespace Web.UI
 {
-    public partial class _Default : WebView<IFloogleLocatorView, FloogleLocatorPresenter>, IFloogleLocatorView
+    public partial class _Default : 
+        WebView<IFloogleLocatorView, FloogleLocatorPresenter>, IFloogleLocatorView
     {
         protected void Page_Load(object sender, EventArgs e)
         {
