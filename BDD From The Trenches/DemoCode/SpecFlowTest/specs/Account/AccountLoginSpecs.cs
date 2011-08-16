@@ -56,7 +56,8 @@ namespace SFT.Specifications.Account
         Because of = () => _result = _accountController.Login(_validLogin);
 
         It should_authenticate_the_user = () =>
-            A.CallTo(() => _authService.Authenticate(_validLogin.Username, _validLogin.Password)).MustHaveHappened();
+            A.CallTo(() => _authService
+                .Authenticate(_validLogin.Username, _validLogin.Password)).MustHaveHappened();
 
         It should_sign_the_user_into_the_site = () =>
             A.CallTo(() => _authService.SignIn(_validLogin.Username)).MustHaveHappened();
@@ -119,7 +120,8 @@ namespace SFT.Specifications.Account
         It should_find_the_user_in_storage_with_the_specified_username = () =>
             A.CallTo(() => _userRepository.GetByUsername(_username)).MustHaveHappened();
 
-        It should_successfully_authenticate_the_user = () => _result.ShouldBeTrue();
+        It should_successfully_authenticate_the_user = () => 
+            _result.ShouldBeTrue();
 
         static WebAuthenticationService _authService;
         static string _password;
