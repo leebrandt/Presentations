@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false">
+    <file url="file://$PROJECT_DIR$/config/base.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/controllers/cast.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/data/provider.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/package.json" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/public/stylesheets/main.styl" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/routes/characters.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/routes/default.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/routes/handle.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/server.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/views/cast.jade" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/views/index.jade" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/views/layout.jade" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/views/westley.jade" charset="UTF-8" />
+  </component>
+</project>
+

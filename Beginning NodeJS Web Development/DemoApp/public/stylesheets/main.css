@@ -1,0 +1,19 @@
+body {
+  background-color: #fff;
+}
+nav.main-nav {
+  background-color: #eee;
+}
+nav.main-nav ul li {
+  list-style-type: none;
+  display: inline-block;
+  margin: 1rem;
+}
+nav.main-nav ul li a {
+  color: #008000;
+  padding: 1rem;
+}
+nav.main-nav ul li a:hover {
+  color: #fff;
+  background-color: #008000;
+}

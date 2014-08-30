@@ -1,0 +1,17 @@
+doctype html
+html
+    head
+        title= title
+        link(rel='stylesheet', href='/stylesheets/main.css')
+    body
+        header
+            nav.main-nav
+                ul
+                    li
+                        a(href='/') The Princess Bride
+                    each val in ['Westley', 'Fezzik', 'Inigo']
+                        li
+                            a(href='/char/'+val)=val
+                    li
+                        a(href='/cast') The Cast
+        block content

@@ -75,11 +75,12 @@ App Store
 	Build and sign with *.p12 (combination of public/private key)
 	Using Provisioning Profile
 	Akin to Github public key
-	Initial submission (taking about 10 business days currently)
-	Update submission (takes about 5 days)
+	Initial submission (taking about 6 business days currently)
+	Update submission (takes about 4 days)
 
 CocoaPods
 	How it works
+		Create Podfile
 	How is it is same/different from NuGet
 	Sample (regular pods)
 		Kiwi

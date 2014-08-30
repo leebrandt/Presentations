@@ -1,0 +1,519 @@
+Beginning NodeJS Web Development Script
+
+WebStorm -> New Project -> Empty Project -> "DevLinkApp"
+
+npm init
+
+Step 1:
+var express = require('express');
+var app = express();
+app.listen(3000);
+
+step 2:
+var express = require('express');
+var app = express();
+
+app.set('port', process.env.PORT || 3000);
+
+var server = app.listen(app.get('port'), function() {
+    console.log('The magic is happening at: %s:%s',
+        server.address().address ,
+        server.address().port);
+});
+
+step 3: (add)
+var router = express.Router();
+
+router.get('/', function(req,res,next){
+   res.send('As you wish.');
+});
+
+app.use('/', router);
+
+step 4: (add)
+/// catch 404 and forward to error handler
+app.use(function(req,res){
+    res.type('txt').send('You keep using that URL. I do not think it goes where you think it goes.');
+});
+
+step 5: (change)
+/// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+    var err = new Error('You keep using that URL. I do not think it goes where you think it goes.');
+    err.status = 404;
+    next(err);
+});
+
+// Handle all error cases
+app.use(function(err,req,res,next){
+    res.send({
+        error: err.status || 500,
+        message: err.message || 'You are in the pit of despair. Don\'t even THINK about trying to escape.'
+});
+
+
+step 6: (add)
+router.get('/handleit/yourway', function(req,res,next){
+   throw new Error('My way is not very sportsmanlike.');
+});
+
+======= REFACTOR ========
+server.js
+=========
+var app = require('./config/base');
+
+app.set('port', process.env.PORT || 3000);
+
+var server = app.listen(app.get('port'), function() {
+    console.log('The magic is happening at: %s:%s',
+        server.address().address ,
+        server.address().port);
+});
+
+config/base.js
+=================
+var express = require('express');
+var app = express();
+
+var base = require('../routes/default');
+var handle = require('../routes/handle');
+
+app.use('/', base);
+app.use('/handleit', handle);
+
+// nobody else has made a match to the requested URL.
+// Must not be here. Let the user know.
+app.use(function(req,res,next){
+    var err = new Error('You keep using that URL. I do not think it goes where you think it goes.');
+    err.status = 404;
+    next(err);
+});
+
+// Handle all error cases
+app.use(function(err,req,res){
+    res.send({
+        error: err.status || 500,
+        message: err.message || 'You are in the pit of despair. Don\'t even THINK about trying to escape.'
+    });
+});
+
+module.exports = app;
+
+routes/default.js
+=================
+var express = require('express');
+    router = express.Router();
+
+router.get('/', function(req,res){
+    res.send('As you wish.');
+});
+
+module.exports = router;
+
+routes/handle.js
+================
+var express = require('express');
+router = express.Router();
+
+router.get('/yourway', function(req,res,next){
+    throw new Error('My way is not very sportsmanlike.');
+});
+
+module.exports = router;
+
+======= Logging =======
+npm install morgan --save
+
+config/base.js (add)
+logger = require('morgan'),
+
+app.use(logger('dev'));
+
+======= View Engine =======
+npm install jade --save
+npm install path --save
+
+config/base.js
+==============
+var express = require('express'),
+    path = require('path');
+
+// view engine setup
+app.set('views', path.join(__dirname, '../views'));
+app.set('view engine', 'jade');
+
+views/index.jade
+================
+doctype html
+html
+    head
+        title= title
+    body
+        p #{message}
+
+====== REFACTOR =======
+views/layout.jade
+=================
+doctype html
+html
+    head
+        title= title
+    body
+        header
+            nav.main-nav
+                ul
+                    li
+                        a(href='/') The Princess Bride
+                    each val in ['Westley', 'Fezzik', 'Inigo']
+                        li
+                            a(href='/char/'+val)=val
+        block content
+
+views/index.jade
+================
+extends layout
+
+block content
+    p #{message}
+
+======= Stylus ======
+npm install stylus --save
+
+config/base.js (add)
+==============
+app.use(require('stylus').middleware(path.join(__dirname, '../public')));
+app.use(express.static(path.join(__dirname, '../public')));
+
+views/index.jade (add)
+======================
+link(rel='stylesheet', href='/stylesheets/main.css')
+
+/public/stylesheets/main.styl (new)
+===================================
+body
+    background-color #FFF
+
+nav.main-nav
+    background-color #EEE
+    ul
+        li
+            list-style-type none
+            display inline-block
+            margin 1rem
+            a
+                color green
+                padding 1rem
+                &:hover
+                    color #FFF
+                    background-color green
+
+
+======= Characters =======
+config/base.js (add)
+==============
+var chars = require('../routes/characters');
+
+app.use('/char', chars);
+
+views/layout.jade (change)
+==========================
+each val in ['Westley', 'Fezzik', 'Inigo']
+
+routes/characters.js (new)
+==========================
+var express = require('express'),
+    router = express.Router();
+
+router.get('/westley', function(req,res){
+    res.render('westley', {title:'The Fire Swamps', message: 'We\'ll never survive.'});
+});
+
+module.exports = router;
+
+views/westley.jade (new)
+=======================
+extends layout
+block content
+    p= message
+    p Nonsense. You're only saying that because noone ever has.
+
+
+views/fezzik.jade (new)
+=======================
+extends layout
+
+block content
+    p= message
+    p There were four white horses.
+    p I was thinking, there are four of us, if we ever find the lady.
+    p Hello lady!
+
+views/inigo.jade (new)
+======================
+extends layout
+
+block content
+    p= message
+    p You killed my father.
+    p Prepare to die.
+
+
+======= error page =======
+views/error.jade (new)
+======================
+doctype html
+html
+    head
+        title= title
+        link(rel='stylesheet', href='/stylesheets/main.css')
+    body
+        h1 title
+        p ${message}
+        p
+            a(href='/') back home
+
+config/base.js (change)
+=======================
+app.use(function(err, req, res, next) {
+    res.status(err.status || 500);
+    res.render('error', {
+        message: err.message,
+        error: err
+    });
+});
+
+======== MongoDB =======
+npm install mongodb --save
+
+data/provider.js (new)
+======================
+var mongo = require('mongodb'),
+    mongoClient = mongo.MongoClient,
+    BSON = mongo.BSONPure,
+    localDb = 'mongodb://localhost/princess';
+
+exports.list = function(collectionName, callback){
+    mongoClient.connect(process.env.MONGOLAB_URI || localDb, null, function(err, db){
+        if(err){
+            return callback(err);
+        }
+
+        db.collection(collectionName, function(err, collection){
+            collection.find().toArray(function(err, items){
+                if(!err){
+                    callback(null, items);
+                }else{
+                    callback(err);
+                }
+                db.close();
+            });
+        });
+    });
+};
+
+exports.findById = function(collectionName, id, callback){
+
+    mongoClient.connect(process.env.MONGOLAB_URI || localDb, null, function(err, db){
+        if(err){
+            return callback(err);
+        }
+        db.collection(collectionName, function(err, collection){
+            var oId = new BSON.ObjectID(id);
+            collection.findOne({_id:oId}, function(err, item){
+                if(!err){
+                    callback(null, item);
+                }else{
+                    callback(err);
+                }
+                db.close();
+            });
+        });
+    });
+};
+
+exports.find = function(collectionName, query, callback){
+    mongoClient.connect(process.env.MONGOLAB_URI || localDb, null, function(err, db){
+        if(err){
+            return callback(err);
+        }
+        db.collection(collectionName, function(err, collection){
+            collection.find(query).toArray(function(err, items){
+                if(!err){
+                    db.close();
+                    callback(null, items);
+                }else{
+                    callback(err);
+                }
+            });
+        });
+    });
+};
+
+exports.add = function(collectionName, object, callback){
+    mongoClient.connect(process.env.MONGOLAB_URI || localDb, null, function(err, db){
+        if(err){
+            callback(err);
+        }
+        db.collection(collectionName, function(err, collection){
+            collection.insert(object, function(err){
+
+                if(err){
+                    return callback(err);
+                }
+
+                collection.findOne(object, function(err, item){
+                    if(!err){
+                        db.close();
+                        callback(null, item);
+                    }else{
+                        callback(err);
+                    }
+                });
+
+            });
+        });
+    });
+};
+
+exports.update = function(collectionName, query, action, callback){
+    mongoClient.connect(process.env.MONGOLAB_URI || localDb, null, function(err, db){
+        if(err){
+            return callback(err);
+        }
+        db.collection(collectionName, function(err, collection){
+            collection.update(query, action, function(err){
+
+                if(err){
+                    return callback(err);
+                }
+
+                collection.findOne(query, function(err, item){
+                    if(!err){
+                        db.close();
+                        callback(null, item);
+                    }else{
+                        callback(err);
+                    }
+                });
+            });
+        });
+    });
+};
+
+
+exports.save = function(collectionName, object, callback){
+    mongoClient.connect(process.env.MONGOLAB_URI || localDb, null, function(err, db){
+        if(err){
+            callback(err);
+        }
+        db.collection(collectionName, function(err, collection){
+            collection.save(object, function(err){
+
+                if(err){
+                    //console.log(err);
+                    return callback(err);
+                }
+
+                collection.findOne(object, function(err, item){
+                    if(!err){
+                        db.close();
+                        callback(null, item);
+                    }else{
+                        callback(err);
+                    }
+                });
+
+            });
+        });
+    });
+};
+
+exports.delete = function(collectionName, query, callback){
+    mongoClient.connect(process.env.MONGOLAB_URI || localDb, null, function(err, db){
+        if(err){
+            callback(err);
+        }
+        db.collection(collectionName, function(err, collection){
+            collection.remove(query, function(err){
+
+                if(err){
+                    return callback(err);
+                }
+
+                return callback(null);
+
+            });
+        });
+    });
+};
+
+controllers/cast.js (new)
+=========================
+var dataProvider = require('../data/provider');
+    express = require('express'),
+    router = express.Router();
+
+router.get('/', function(req,res, next){
+    dataProvider.list('cast', function(err, items){
+        if(err){
+            return next(err);
+        }
+        res.render('cast', {title:'Cast', cast:items});
+    });
+});
+
+module.exports = router;
+
+views/layout.jade (add)
+=======================
+                    li
+                        a(href='/cast') The Cast
+
+views/cast.jade (new)
+=====================
+extends layout
+block content
+    h1 Cast 
+    if !cast || cast.length == 0
+        p There are no cast members currently listed.
+        p Please add one.
+    else
+        ul.cast
+            each member in cast
+                li.cast-member
+                    | #{member.character} played by #{member.actor}
+
+
+====== Add Cast Member ======
+npm install body-parser --save
+
+config/base.js (add)
+====================
+bodyParser = require('body-parser'),
+
+app.use(bodyParser.urlencoded());
+
+controllers/cast.js (add)
+=========================
+router.post('/', function(req,res,next){
+    var newCharacter = {character:req.body['character'], actor:req.body['actor']};
+    dataProvider.add('cast', newCharacter, function(err){
+       if(err){
+           return next(err);
+       }
+       res.redirect('/cast');
+    });
+});
+
+views/cast.jade (add)
+=====================
+    div.cast-box
+        form(name="cast", action="/cast", method="post")
+            input(type="text", name="character", placeholder="character")
+            input(type="text", name="actor", placeholder="actor")
+            input(type="submit", value="Add")
+
+
+
+
+

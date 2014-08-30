@@ -1,0 +1,16 @@
+extends layout
+block content
+    h1 Cast
+    if !cast || cast.length == 0
+        p There are no cast members currently listed.
+        p Please add one.
+    else
+        ul.cast
+            each member in cast
+                li.cast-member
+                    | #{member.character} played by #{member.actor}
+    div.cast-box
+        form(name="cast", action="/cast", method="post")
+            input(type="text", name="character", placeholder="character")
+            input(type="text", name="actor", placeholder="actor")
+            input(type="submit", value="Add")
