@@ -3,4 +3,4 @@
 
 	value = 'new value';
 
-})()
+})();

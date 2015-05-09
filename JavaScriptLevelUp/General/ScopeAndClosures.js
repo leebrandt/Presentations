@@ -12,7 +12,7 @@ function closure() {
   var date = new Date();
   return function(){
     return date.getMilliseconds();
-  }
+  };
 }
 
 (function(){
@@ -23,7 +23,7 @@ function closure() {
   console.log(newClosure());
   setTimeout(
   	function(){
-  		console.log(newClosure())
+  		console.log(newClosure());
   	},
     500);
-})()
+})();

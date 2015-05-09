@@ -6,7 +6,7 @@ var Project = require('./Setup'),
 
 	Project.NewFunc = function(){
 		console.log('I am here');
-	}
+	};
 
 	var obj1 = new Project.FirstObject();
 	obj1.FirstFunc();
@@ -17,7 +17,7 @@ var Project = require('./Setup'),
 	Project.FirstObject.prototype.yak = function()
 	{
 		console.log('Barf!');
-	}
+	};
 
 	Project.NewFunc();
 

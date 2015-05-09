@@ -1,4 +1,4 @@
-var MyProjectName = {};
+var MyProjectName = MyProjectName || {};
 
 MyProjectName.FirstObject = function(){
 	'use strict';
