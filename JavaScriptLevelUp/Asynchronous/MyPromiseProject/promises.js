@@ -16,7 +16,7 @@
 		  }, 1 );
 
 		return d.promise();
-	};
+	}
 
 	$.when(asyncFunc())
 		.progress(function(status){
@@ -26,4 +26,4 @@
 			console.log(status);
 		});	
 
-})($)
+})(jQuery);

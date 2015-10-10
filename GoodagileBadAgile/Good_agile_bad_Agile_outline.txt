@@ -1,0 +1,48 @@
+good agile, bad Agile
+What IS agile? and what is Agile?
+	Agile is a brand
+		has mostly lost its meaning
+		describes any number of Scrums, Kanbans or XPs
+		strikes fear into the hearts of BAs and PMs
+	
+	agile is an adjective
+		means nimble or spritely
+		better description of what we're trying to do
+		strikes fear into the hearts of the lazy
+	
+Common Mistakes/Missteps
+	"It's a small change. Lets just go ahead and do it."
+		Dev, QA, Deployment. Understand whether it is _truly_ a small change or not.
+		take the level of effort (from Dev, QA, et. al.) and compare to business value.
+	
+	"Me: Everything is always changing. Them: Yeah, that's the problem with Agile."
+		Agile didn't _cause_ the change. Agile is all about how you respond to change.
+		The process should make change easier, more fluid
+		When change is painful, you can choose to ignore change, or make change easier.
+		What's more important: giving the business what they asked for? Or giving them what they need?
+		
+	"My team isn't meeting their commitments. I don't know what to do."
+		Commit to less.
+ 		Success begets success. Make sure you start with a commitment your team can achieve. It's easy to pull in more stories if you finish early and it builds confident, successful teams.
+		If your team isn't meeting it's commitments, either you're over committing or your team if fucking off and not getting their work done.
+			If you assume they are fucking off, you: 
+				put websense in place to keep them from Facebook, etc. 
+				Keep a tighter leash on them to make them do their work. 
+				(Scientific Mgmt) It creates a subjugated relationship (parent/child). If you act like the parent, your team will act like children (sociology 101 people fill the roles they think others expect them to fill). If you are authoritarian, you will create "subjects" that don't think for themselves and run everything past you first (time consuming).
+				If you assume they are over committed, you'll back their commitments off a little to the point that they can achieve their commitments. Maybe even pull in some extra stories. They feel confident. They feel good. You stay out of their way. They become empowered to charge ahead, to make improvements, to think for themselves (and make mistakes). This is a recipe for innovation.
+				Which team would you rather work on/with?
+				
+	"That's not what the process says to do."
+		You are not your process.
+		Your process exists to serve the organization. Not the other way around.
+		Your process should be set to improve software delivery, not for the sake of the process.
+		
+	
+	"What about planning?"
+		If we make a plan, and something (requirements, assumptions, etc.) changes, what happens to the plan?
+		Why spend a lot of time developing a plan?
+		
+		
+	
+	
+
