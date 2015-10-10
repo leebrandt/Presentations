@@ -37,10 +37,13 @@ body{
 }
 
 .highlights .highlight,
-.employees .employee,
-.clients .client{
+.employees .employee{
 	width: 33%;
 	float: left;
+}
+
+.highlights img{
+	width: 80%;
 }
 
 .tabular-data{
