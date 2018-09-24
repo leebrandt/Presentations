@@ -1,33 +1,33 @@
 var MyProjectName = MyProjectName || {};
 
-MyProjectName.FirstObject = function(){
+MyProjectName.FirstObject = function () {
 	'use strict';
 
 	var name = 'First Object',
-		firstFunc = function(){
+		firstFunc = function () {
 			console.log('%s : First Function', name);
 		};
 
-	return{
+	return {
 		FirstFunc: firstFunc
 	};
 };
 
-MyProjectName.SecondObject = function(){
+MyProjectName.SecondObject = function () {
 	'use strict';
 
 	var name = 'Second Object',
-		secondFunc = function(){
+		secondFunc = function () {
 			console.log('%s : Second Function', name);
 		};
 
-	return{
+	return {
 		SecondFunc: secondFunc
 	};
 
 };
 
-(function(p){
+(function (p) {
 	'use strict';
 
 	var firstObject = new p.FirstObject(),
