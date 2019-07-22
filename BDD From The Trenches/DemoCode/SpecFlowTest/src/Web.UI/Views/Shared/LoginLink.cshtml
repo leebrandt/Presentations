@@ -1,8 +1,0 @@
-﻿@if (User.Identity.IsAuthenticated)
-{
-  @Html.ActionLink("Log Out", "Logout", "Account")
-}
-else
-{ 
-  @Html.ActionLink("Log In", "Login", "Account")
-}
